@@ -6,7 +6,7 @@ The image is available through oficial Singularity library or can be created loc
 
 [Singularity](https://sylabs.io/) is a virtualization software based on containers. Follow [Quick Start[(https://docs.sylabs.io/guides/3.11/user-guide/quick_start.html) for install and basic use instructions.
 
-## Image from libary
+## Image from the library
 
 Visit [https://cloud.sylabs.io/library/capdnet](https://cloud.sylabs.io/library/capdnet) for the list of available CAPD singularity images 
 
