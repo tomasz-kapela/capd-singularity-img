@@ -1,0 +1,16 @@
+BootStrap: localimage
+From: capd-dev.sif
+
+
+%post
+	# Cleaning capd
+	cd /usr/src
+	rm -rf capdbuild
+	rm -rf capd
+
+%runscript
+	echo "GCC image with the CAPD library installed in /usr/local directory"
+	
+%help
+	Singularity image with latest CAPD library installed. 
+	It is installed to /usr/local directory.
