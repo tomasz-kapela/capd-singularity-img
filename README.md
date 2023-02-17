@@ -16,6 +16,8 @@ The latest capd image can be run by
 singularity shell library://capdnet/capd/capd  
 ```
 
+This will run a shell within a container (capd singularity image) and your home directory will be mounted so that you will have read/write access to all files in it.   
+
 To download image to local storage before running invoke
 
 ```bash
