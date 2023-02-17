@@ -45,7 +45,7 @@ First you have to:
 * create an [Access Token](https://cloud.sylabs.io/tokens) and login with it `singularity remote login`
 * create a key pair for image signing (see `singularity help key newpair`)
 
-Now you can build, sign and upload capd images to the library (replace path with your path to your projects)
+Then you can build, sign and upload capd images to the library (replace path with path to your projects)
 
 ```
 sudo singularity build capd-dev.sif capd-dev.def
