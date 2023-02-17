@@ -4,6 +4,11 @@ CAPD Singularity image
 Project contains scripts that create Singularity image with [CAPD library](http://capd.ii.uj.edu.pl/) installed in `/usr/local` directory.
 The image is available through oficial Singularity library or can be created locally from scripts.
 
+Two version of the image are provided
+
+* capd - contains library installed in `/usr/local` and you do not need to provide any path to call `capd-config` script or include capd headers. 
+* capd-dev - additionaly contains the capd library sources and its build result in `/usr/src` directory 
+
 [Singularity](https://sylabs.io/) is a virtualization software based on containers. Follow [Quick Start](https://docs.sylabs.io/guides/3.11/user-guide/quick_start.html) for install and basic use instructions.
 
 ## Image from the library
