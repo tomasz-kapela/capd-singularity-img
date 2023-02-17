@@ -2,21 +2,13 @@ BootStrap: docker
 From: gcc:latest
 
 %setup 
-  echo "This is a scriptlet that will be executed on the host, as root, after" 
-  echo "the container has been bootstrapped. To install things into the container" 
-  echo "reference the file system location with $SINGULARITY_ROOTFS."
 
 %environment
-	
 
 %post
-	#  echo "This scriptlet section will be executed from within the container after" 
-	#  echo "the bootstrap/base has been created and setup."
-
-	# Installing capd dependencies
+	echo "Installing capd dependencies"
 	apt-get update
 	
-	# RUN apt-get install -y liblog4cxx-dev 
 	apt-get install -y libmpfr-dev autoconf libtool zip subversion
 	apt-get install -y libboost-test-dev libboost-filesystem-dev libboost-tools-dev
 	apt-get install -y  ssh screen vim
@@ -28,14 +20,14 @@ From: gcc:latest
 	# unzip capd-capdDynSys-5.1.2.zip
 	# mv  capd-capdDynSys-5.1.2.zip capd
 
-	# The latest version from svn repository 
+	echo "Getting the latest version from svn repository" 
 	svn co --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other https://svn.capdnet.ii.uj.edu.pl/capd/
 	cd capd
 	svn co --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
 	autoreconf -i
 	cd ..
 
-	# Building CAPD
+        echo "Building CAPD"
 	mkdir capdbuild
 	cd capdbuild
 
@@ -46,7 +38,7 @@ From: gcc:latest
 	# Running test 
 	# make check 
 
-	# Installing CAPD
+	echo "Installing CAPD"
 	make install
 	ldconfig
 
