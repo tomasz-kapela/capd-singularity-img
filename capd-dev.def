@@ -8,10 +8,17 @@ From: gcc:latest
 %post
 	echo "Installing capd dependencies"
 	apt-get update
-	
-	apt-get install -y libmpfr-dev autoconf libtool zip subversion
-	apt-get install -y libboost-test-dev libboost-filesystem-dev libboost-tools-dev
-	apt-get install -y  ssh screen vim
+
+	# Install libraries and dependancies
+	apt-get install -y  libmpfr-dev
+	apt-get install -y  libboost-test-dev libboost-filesystem-dev libboost-tools-dev
+
+	# Install compilation tools
+    apt-get install -y  git cmake
+#	apt-get install -y  autoconf libtool zip subversion
+
+    # Install utils
+    apt-get install -y  ssh screen vim
 
 	cd /usr/src
   
@@ -20,19 +27,16 @@ From: gcc:latest
 	# unzip capd-capdDynSys-5.1.2.zip
 	# mv  capd-capdDynSys-5.1.2.zip capd
 
-	echo "Getting the latest version from svn repository" 
-	svn co --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other https://svn.capdnet.ii.uj.edu.pl/capd/
-	cd capd
-	svn co --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other https://svn.capdnet.ii.uj.edu.pl/capdDynSys4
-	autoreconf -i
-	cd ..
+	echo "Getting the latest version from GitHub repository"
+	git clone https://github.com/CAPDGroup/CAPD.git capd
+	#svn co --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other https://svn.capdnet.ii.uj.edu.pl/capd/
 
-        echo "Building CAPD"
+    echo "Building CAPD"
 	mkdir capdbuild
 	cd capdbuild
 
-	../capd/configure 
-	make -j 4 lib
+	cmake ../capd
+	make -j 4
 
 
 	# Running test 
